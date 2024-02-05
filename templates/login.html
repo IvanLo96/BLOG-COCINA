@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login</title>
+
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        .body-bg {
+            background-color: #941900;
+        }
+    
+        body {
+            font-family: 'cursive', sans-serif;
+        }
+    </style>
+
+</head>
+
+<body class="body-bg min-h-screen pt-12 md:pt-20 pb-6 px-2 md:px-0" style="font-family:'Lato',sans-serif;">
+    <header class="max-w-lg mx-auto">
+
+        
+        <a href="/">
+            <h1 class="text-4xl font-bold text-white text-center" style="color:white">Flavor Fusion</h1>
+        </a>
+        
+    </header>
+
+    <main class="max-w-lg mx-auto p-8 md:p-12 my-10 rounded-lg shadow-2xl" style="background-color:#E9D8A6;">
+        <section>
+            <h3 class="font-bold text-2xl text-gray-900">Bienvenido a Flavor Fusion</h3>
+            <p class="text-gray-900 pt-2">Ingresa a tu cuenta.</p>
+        </section>
+
+        <section class="mt-10">
+            <form class="flex flex-col" method="POST" action="/">
+                <div class="mb-6 pt-3 rounded bg-gray-200">
+                    <label class="block text-sm font-bold mb-2 ml-3" for="email" style="color: #4B2C20;">Correo</label>
+                    <input name="username" type="text" id="email" class="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-purple-600 transition duration-500 px-3 pb-3">
+                </div>
+                <div class="mb-6 pt-3 rounded bg-gray-200">
+                    <label class="block text-sm font-bold mb-2 ml-3" style="color: #4B2C20;" for="password">Contraseña</label>
+                    <input name="password" type="password" id="password" class="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-purple-600 transition duration-500 px-3 pb-3">
+                </div>
+                <div class="flex justify-end">
+                    <a href="create.html" class="text-sm hover:underline mb-6" style="text-decoration-color: tomato">Olvidaste tu contraseña?</a>
+                </div>
+                <button class=" hover:bg-white text-white font-bold py-2 rounded shadow-lg hover:shadow-xl transition duration-200" type="submit" style="background-color:#4B2C20 ">Iniciar Sesión</button>
+            </form>
+        </section>
+    </main>
+
+    <div class="max-w-lg mx-auto text-center mt-12 mb-6">
+        <p class="text-white">No tienes cuenta? <a href="{{ url_for('registro') }}" class="font-bold hover:underline">Regístrate</a>.</p>
+    </div>
+
+    <footer class="max-w-lg mx-auto flex justify-center text-white">
+        <a href="#" class="hover:underline">Contacto</a>
+        <span class="mx-3">•</span>
+        <a href="#" class="hover:underline">Privacidad</a>
+    </footer>
+</body>
+</html>

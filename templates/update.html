@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"> 
+    <style>
+        
+        .flex-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Lato', sans-serif;
+            background-color: #E9D8A6;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            background-color: #941900;
+            position: sticky;
+            top: auto;
+            left: 0;
+            z-index: 1000;
+            padding: 20px;
+        }
+
+        div.container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        ul.menu {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        ul.menu li {
+            margin-left: 20px;
+        }
+
+        ul.menu li:first-child {
+            margin-left: 0;
+            margin-right: auto;
+        }
+
+        ul.menu li a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+        }
+
+        .images-container {
+            width: 100%;
+            margin-top: 100px;
+            max-width: 1200px;
+            margin: 100px auto;
+            display: flex;
+            justify-content: space-between;
+        }
+
+
+        .form-container {
+            width: 500px;
+            max-width: 100%;
+            margin: 200px auto 0; /* Ajusta la distancia desde la barra de navegación */
+            padding: 20px;
+            border-radius: 10px;
+            background-color: maroon;
+            color: aliceblue;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .form-container h1 {
+            text-align: center;
+        }
+
+        .form-container form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .form-container label {
+            margin-bottom: 10px;
+        }
+
+        .form-container input,
+        .form-container textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .form-container input[type="submit"] {
+            background-color: #941900;
+            color: white;
+            cursor: pointer;
+        }
+
+        .form-container a {
+            display: block;
+            text-align: center;
+            margin-top: 15px;
+            color: #941900;
+            text-decoration: none;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actualizar Receta</title>
+</head>
+<body>
+
+    <header>
+        <nav> 
+            <div class="container">
+                <div class="logo">
+                    <a href="/home" class="flex items-center space-x-3 rtl:space-x-reverse">
+                        <img src="/static/2.png" style="width: 50px; height: 50px;" class="h-8" alt="Flavor Logo" />
+                    </a>
+                </div>
+
+                <ul class="menu">
+                    <li><a href="/home">Inicio</a></li>
+                    <li><a href="/home">Nosotros</a></li>
+                    <li><a href="/home">Servicios</a></li>
+                    <li><a href="/home">Productos</a></li>
+                    <li><a href="/home">Contactos</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <div class="form-container">
+        <h1>Actualizar Receta</h1>
+        <form method="post" action="{{ url_for('update', id=receta.id) }}">
+
+            <label for="titulo">Título:</label>
+            <input type="text" name="titulo" value="{{receta.titulo}}" required>
+
+            <label for="imagen">URL de la Imagen:</label>
+            <input type="text" name="imagen" value="{{ receta.imagen }}">
+
+            <label for="contenido">Contenido:</label>
+            <textarea name="contenido" rows="4" required>{{ receta.contenido }}</textarea>
+
+            <input style="color: white;" type="submit" value="Actualizar Receta">
+        </form>
+
+        <a style=" color:white; background-color:maroon" href="{{ url_for('read', id=receta.id) }}">Cancelar y Volver</a>
+    </div>
+
+</body>
+</html>

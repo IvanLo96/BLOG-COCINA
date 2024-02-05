@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+    <style>
+        .flex-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Lato', sans-serif;
+            background-color: #E9D8A6;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            background-color: #941900;
+            position: sticky;
+            top: auto;
+            left: 0;
+            z-index: 1000;
+            padding: 20px;
+        }
+
+        div.container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        ul.menu {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        ul.menu li {
+            margin-left: 20px;
+        }
+
+        ul.menu li:first-child {
+            margin-left: 0;
+            margin-right: auto;
+        }
+
+        ul.menu li a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+        }
+
+        .images-container {
+            width: 100%;
+            margin-top: 100px;
+            max-width: 1200px;
+            margin: 100px auto;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .image img {
+            width: 120px; /* Ajusta el tamaño del ancho */
+            height: 120px; /* Ajusta la altura */
+            object-fit: cover; /* Ajusta la imagen dentro del espacio sin distorsionar nada */
+            margin-bottom: 20px;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Nueva Receta</title>
+</head>
+<body>
+
+
+    <header>
+        <nav> 
+            <div class="container">
+                <div class="logo">
+                    <a href="/home" class="flex items-center space-x-3 rtl:space-x-reverse">
+                        <img src="/static/2.png" style="width: 50px; height: 50px;" class="h-8" alt="Flavor Logo" />
+                    </a>
+                </div>
+
+                <ul class="menu">
+                    <li><a href="/home">Inicio</a></li>
+                    <li><a href="/home">Nosotros</a></li>
+                    <li><a href="/home">Servicios</a></li>
+                    <li><a href="/home">Productos</a></li>
+                    <li><a href="/home">Contactos</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+
+    
+    <h1>Crear Nueva Receta</h1>
+    <form method="post" action="{{ url_for('create') }}">
+        <label for="titulo">Título:</label>
+        <input type="text" name="titulo" required><br>
+
+
+        <label for="imagen">URL de la Imagen:</label>
+        <input type="text" name="imagen"><br>
+
+
+
+        <label for="contenido">Contenido:</label>
+        <textarea name="contenido" rows="4" required></textarea><br>
+        
+        <input type="submit" value="Crear Receta">
+    </form>
+    <a href="{{ url_for('index') }}">Volver al Inicio</a>
+</body>
+</html>

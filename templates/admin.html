@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"> 
+
+    <style>
+
+        .contenedor {
+            display: flex;
+            flex-direction: column; 
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .flex-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Lato', sans-serif;
+            background-color: #E9D8A6;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            background-color: #941900;
+            position: sticky;
+            top: auto;
+            left: 0;
+            z-index: 1000;
+            padding: 20px;
+        }
+
+        div.container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        ul.menu {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        ul.menu li {
+            margin-left: 20px;
+        }
+
+        ul.menu li:first-child {
+            margin-left: 0;
+            margin-right: auto;
+        }
+
+        ul.menu li a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+        }
+
+        .images-container {
+            width: 100%;
+            margin-top: 100px;
+            max-width: 1200px;
+            margin: 100px auto;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .image img {
+            width: 320px;
+            height: 320px;
+            object-fit: cover;
+            margin-bottom: 20px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <header>
+        <nav> 
+            <div class="container">
+                <div class="logo">
+                    <a href="/home" class="flex items-center space-x-3 rtl:space-x-reverse">
+                        <img src="/static/2.png" style="width: 50px; height: 50px;" class="h-8" alt="Flavor Logo" />
+                    </a>
+                </div>
+
+                <ul class="menu">
+                    <li><a href="/home">Inicio</a></li>
+                    <li><a href="/home">Nosotros</a></li>
+                    <li><a href="/home">Servicios</a></li>
+                    <li><a href="/home">Productos</a></li>
+                    <li><a href="/home">Contactos</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <div class="contenedor">
+        <ul style="list-style: none; padding: 0;">
+            {% for receta in recetas %}
+                <li style="margin-bottom: 20px;">
+                    <a href="{{ url_for('read', id=receta.id) }}">
+                        <img style="width: 600px; height: 400px; border-radius: 10px;" src="{{ receta.imagen }}" style="width:80px; height: 80px">
+                        <h3>{{ receta.titulo }}</h3>
+                    </a>
+
+                    <div class="actions" style="margin-top: 10px;">
+                        <form method="GET" action="{{ url_for('update', id=receta.id) }}">
+                            <button type="submit"><i class="fas fa-edit"></i> Editar</button>
+                        </form>
+
+                        <form method="POST" action="{{ url_for('delete', id=receta.id) }}">
+                            <button type="submit"><i class="fas fa-trash-alt"></i> Borrar</button>
+                        </form>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+    
+</body>
+</html>
