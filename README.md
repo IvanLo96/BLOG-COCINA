@@ -60,6 +60,12 @@ Este proyecto se ejecuta de la siguiente manera:
 1. Clonar el repositorio.
 2. Instalar todo lo mencionado arriba. 
 
+##OBSERVACIONES
+* Link para ingresar como admin: http://127.0.0.1:5000/admin
+* Link para cargar nuevas recetas : http://127.0.0.1:5000/create.
+* Para cargar una nueva imagen se ingresa la url.
+  
+
 
 
 ## ARQUITECTURA 
